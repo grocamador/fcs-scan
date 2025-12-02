@@ -1,0 +1,16 @@
+name: FCS Scan
+on: workflow_dispatch
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run FCS IaC Scan
+        uses: crowdstrike/fcs-action@v2.0.3
+        with:
+          falcon_client_id: ${{ vars.FALCON_CLIENT_ID }}
+          falcon_region: 'us-1'
+          path: 'git::https://github.com/RhinoSecurityLabs/cloudgoat.git'
+        env:
+          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
