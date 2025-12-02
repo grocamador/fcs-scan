@@ -22,6 +22,9 @@ jobs:
           path: './samples'
           report_formats: 'sarif'
           output_path: './results.sarif'
+          upload_results: true
+          project_owners: 'gonzalo.rocamador@crowdstrike.com'
+          project_name: 'groca-iac'
         env:
           FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
 
